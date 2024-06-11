@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}S'inscrire{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
+    
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+             <img src="{{ asset('images/logoknowledge.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                <li><a href="{{ path('login') }}">Se connecter</a></li>  
+            </ul>
+        </nav>
+    </div>
+</header>
+    {% block body %}
+       
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-container">
+                        <h1 class="text-center">S'inscrire</h1>
+
+                        {{ form_errors(registrationForm) }}
+
+                        {{ form_start(registrationForm) }}
+                        
+                            <div class="form-group">
+                                {{ form_row(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        
+                            <div class="form-group">
+                                {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(registrationForm.confirmPassword, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Créer un compte</button>
+                        {{ form_end(registrationForm) }}
+
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Knowledge Learning. Tous droits réservés.</p>
+        <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Découvrir le Cursus - {{ theme.name }}</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        h5 {
+            clear: both;
+            margin: 0.67em 0;
+            line-height: normal;
+            color: #384050;
+            font-weight: 700;
+            margin-top: 0;
+            font-size: 2rem;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 15px 15px 15px;
+            margin-bottom: 15px;
+        }
+        span.knowledge-training {
+            -webkit-text-size-adjust: 100%;
+            font-family: "Comic Sans MS", Arial, sans-serif; 
+            line-height: normal;
+            letter-spacing: -1px;
+            font-size: 2rem !important;
+            text-align: left;
+            color: var(--primary-color);
+            box-sizing: inherit;
+            font-weight: bold;
+            padding: var(--spacing-20);
+            box-shadow: var(--shadow-natural);
+        }
+
+        :root {
+            --primary-color: #384050;
+            --secondary-color: #0074c7;
+            --tertiary-color: #00497c;
+            --quaternary-color: #384050;
+            --accent-color1: #cd2c2e;
+            --accent-color2: #82b864;
+
+            --font-normal: 16px;
+            --font-huge: 42px;
+            --font-small: 13px;
+            --font-medium: 20px;
+            --font-large: 36px;
+            --font-x-large: 42px;
+
+            --spacing-20: 0.44rem;
+            --spacing-30: 0.67rem;
+            --spacing-40: 1rem;
+            --spacing-50: 1.5rem;
+            --spacing-60: 2.25rem;
+            --spacing-70: 3.38rem;
+            --spacing-80: 5.06rem;
+
+            --shadow-natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --shadow-deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+            --shadow-sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            --shadow-outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+            --shadow-crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+        }
+        h1.wp-block-heading {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+        }
+
+        h1.wp-block-heading:after {
+            content: "";
+            height: 5px;
+            margin-left: 8px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, currentColor 0%, currentColor 10%, rgba(255, 255, 255, 0) 100%);
+        }  
+    </style>
+</head>
+<body>
+{% block body %}
+{% include 'includes/header.html.twig' %}
+
+<main>
+    <div class="container mt-5">
+        <h1 class="wp-block-heading has-text-align-left has-text-color">
+            <span class="knowledge-training">
+            <strong>Nos cours en {{ theme.name }}</strong>
+        </span></h1>
+        <p>Vous avez la possibilité d'acheter le cursus ou d'acheter une leçon individuelle</p>
+        <div class="row">
+            {% for cursus in theme.cursuses %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                         <div class="card-body">
+                                <h5 class="card-title">{{ cursus.name }}</h5>
+                                <p class="card-text">Prix du cursus: {{ cursus.price }} €</p>
+                                <a href="{{ path('app_curcus', {'cursus_id': cursus.id}) }}" class="button">Acheter le cursus</a>
+                                <ul>
+                                    {% for lesson in cursus.lessons %}
+                                        <li>{{ lesson.name }} - {{ lesson.price }} €</li>
+                                        <a href="{{ path('app_acheter', {'lesson_id': lesson.id}) }}" class="button">Acheter la leçon</a>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Knowledge Learning. Tous droits réservés.</p>
+    </div>
+</footer>
+{% endblock %}
+</body>
+</html>

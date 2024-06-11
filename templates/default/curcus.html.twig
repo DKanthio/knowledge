@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le curcus</title>
+</head>
+<body>
+{% if theme %}
+    <h1>Cursus</h1>
+   
+    <ul>
+        {% for lesson in cursus.lessons %}
+            <li>
+
+                <h2>Leçons:{{ lesson.id }}</h2>
+                <a href="">{{ lesson.name }}</a>
+                <p>{{ lesson.description }}</p>
+                 {% if not lesson.isValidated %}
+                 <iframe width="560" height="315" src="{{ lesson.youtubeUrl }}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                  <form method="post" action="{{ path('validate_lesson', {'id': lesson.id}) }}">
+                    <button type="submit">Valider la leçon</button>
+                </form>
+                {% else %}
+                <p>Leçon validée</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+    <p>Aucun cursus trouvé pour ce thème.</p>
+{% endif %}
+</body>
+</html>

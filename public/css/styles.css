@@ -1,0 +1,71 @@
+nav ul li {
+    display: inline-block; 
+    margin-left: 20px; 
+}
+
+nav ul li a {
+    color:#f1f8fc; 
+    text-decoration: none; 
+    transition: color 0.3s; 
+}
+
+nav ul li a:hover {
+    color: #82b864; 
+}
+
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #f1f8fc;
+    color: #384050;
+}
+
+.hero {
+    background-color: #00497c;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+.hero .btn {
+    background-color: #cd2c2e;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.courses, .advantages, .testimonials, footer {
+    margin: 20px 0;
+}
+.course-list, .testimonial-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.course-item, .testimonial-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1 1 calc(33.333% - 20px);
+ }
+footer {
+    background-color: #0074c7;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+footer {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+footer  {
+    margin: 0 10px;
+ }
+footer  {
+    color: white;
+    text-decoration: none;
+}
+        

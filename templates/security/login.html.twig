@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Connexion{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
+</head>
+<body>
+    <header>
+    <div class="container">
+        <div class="logo">
+             <img src="{{ asset('images/logoknowledge.png') }}" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('registration') }}">S'inscrire</a></li>
+                <li><a href="{{ path('login') }}">Se connecter</a></li>  
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <div class="container">
+        <main role="main" class="container">
+            {% block body %}
+                <div class="form-container small-width-form">
+                    <h1 class="text-center">Se connecter</h1>
+
+                    <form method="post" action="{{ path('login') }}">
+                        <div class="form-group">
+                            <label for="inputUsername">Nom d'utilisateur</label>
+                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword">Mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <button class="btn btn-lg btn-primary" type="submit">
+                            Se connecter
+                        </button>
+                    </form>
+
+                </div>
+                
+            {% endblock %}
+            
+        </main>
+    </div>
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Knowledge Learning. Tous droits réservés.</p>
+        <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

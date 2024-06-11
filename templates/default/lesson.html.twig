@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La lecon</title>
+
+</head>
+<body>
+
+    <h1>{{ lesson.name }}</h1>
+    <p>{{ lesson.description }}</p>
+    <iframe width="560" height="315" src="{{ lesson.youtubeUrl }}" frameborder="0" allowfullscreen></iframe>
+    {% if not lesson.isValidated %}
+                <form method="post" action="{{ path('validate_lesson', {'id': lesson.id}) }}">
+                    <button type="submit">Valider la leçon</button>
+                </form>
+                {% else %}
+                <p>Leçon validée</p>
+                {% endif %}
+</body>
+</html>

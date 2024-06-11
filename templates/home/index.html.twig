@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Knowledge!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-img-top {
+            object-fit: cover;
+            height: 150px;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 40px; 
+        }
+        .card {
+            height: 280px;
+            width: 200px;
+        }
+    
+       :root {
+            /* Palette de couleurs */
+            --primary-color: #f1f8fc;
+            --secondary-color: #0074c7;
+            --tertiary-color: #00497c;
+            --quaternary-color: #384050;
+            --accent-color1: #cd2c2e;
+            --accent-color2: #82b864;
+
+            /* Variables de taille de police */
+            --font-normal: 16px;
+            --font-huge: 42px;
+            --font-small: 13px;
+            --font-medium: 20px;
+            --font-large: 36px;
+            --font-x-large: 42px;
+
+            /* Variables d'espacement */
+            --spacing-20: 0.44rem;
+            --spacing-30: 0.67rem;
+            --spacing-40: 1rem;
+            --spacing-50: 1.5rem;
+            --spacing-60: 2.25rem;
+            --spacing-70: 3.38rem;
+            --spacing-80: 5.06rem;
+
+            /* Variables d'ombre */
+            --shadow-natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+            --shadow-deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+            --shadow-sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            --shadow-outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+            --shadow-crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+        }
+
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f1f8fc;
+            color: #384050;
+        }
+        h4, li{
+            font-family: 'Comic Sans MS', sans-serif;
+            color: #384050;
+        }
+        h1, h2, p ,a {
+            font-family: 'Comic Sans MS', sans-serif;
+            color: #f1f8fc;
+        }
+        h3.wp-block-heading {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color); /* Utilise la couleur secondaire */
+        }
+
+        h3.wp-block-heading:after {
+            content: "";
+            height: 5px;
+            margin-left: 8px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, currentColor 0%, currentColor 10%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        span.knowledge-training {
+            -webkit-text-size-adjust: 100%;
+            font-family: "Comic Sans MS", Arial, sans-serif; /* Utilise la police Comic Sans MS */
+            line-height: normal;
+            letter-spacing: -1px;
+            font-size: 2rem !important;
+            text-align: left;
+            color: var(--primary-color); /* Couleur de texte principale */
+            background-color: var(--secondary-color); /* Couleur de fond secondaire */
+            box-sizing: inherit;
+            font-weight: bold;
+            padding: var(--spacing-20); /* Espacement */
+            border: 2px solid var(--tertiary-color); /* Bordure avec la couleur tertiaire */
+            box-shadow: var(--shadow-natural); /* Ombre naturelle */
+        }
+        
+    </style>
+</head>
+<body>
+{% block body %}
+{% include 'includes/header.html.twig' %}
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Bienvenue sur Knowledge Learning</h1>
+            <p>Apprenez à votre rythme avec nos cours en ligne de haute qualité.</p>
+            <a href="{{ path('registration') }}" class="btn">Commencez maintenant</a>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="container">
+            <h2 style="color:#384050">Pourquoi choisir Knowledge Learning ?</h2>
+            <ul>
+                <li>Contenu de haute qualité</li>
+                <li>Accès à vie aux cours</li>
+                <li>Apprenez à votre rythme</li>
+            </ul>
+        </div>
+    </section>
+    
+    </div>
+    <div class="container mt-5">
+    <h3 class="wp-block-heading has-text-align-left has-text-color">
+        <span class="knowledge-training">
+            <strong>Formez-vous facilement avec Knowledge</strong>
+        </span>
+    </h3>
+    <a href="/purchase">Accéder à mes cours</a></li>
+       
+        <div class="row g-4">
+            {% for theme in themes %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ asset('images/' ~ theme.image) }}" class="card-img-top small-image" alt="{{ theme.name }}">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <img src="{{ theme.icon }}" class="icon" alt="Icône de {{ theme.name }}">
+                            <h4 class="card-title">{{ theme.name }}</h4>
+                            <a href="{{ path('discover_cursus', { 'id': theme.id }) }}" class="btn btn-primary" style="background-color: #cd2c2e;">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Knowledge Learning. Tous droits réservés.</p>
+    </div>
+</footer>
+{% endblock %}
+</body>
+</html>

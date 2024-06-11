@@ -1,0 +1,70 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+registration:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    
+logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+    
+email_verification:
+    path: /verify/email
+    controller: App\Controller\RegistrationController::verifyUserEmail
+
+activation_page:
+    path: /activation-compte
+    controller: App\Controller\ActivationController::activationPage
+
+afficher_purchase:
+    path: /purchase
+    controller: App\Controller\PurchaseController::show
+
+discover_cursus:
+    path: /discover-cursus/{id}
+    controller: App\Controller\DefaultController::discoverCursus
+
+option_connexion:
+    path: /option
+    controller: App\Controller\ActivationController::optionPage
+
+curcus:
+    path: /curcus/{id}
+    controller: App\Controller\ActivationController::curcusPage
+
+lesson:
+    path: /lesson/{id}
+    controller: App\Controller\ActivationController::lessonPage
+
+
+app_curcus:
+    path: /curcus
+    controller: App\Controller\CurcusController::index
+
+app_acheter:
+    path: /acheter
+    controller: App\Controller\AcheterController::index
+
+
+lesson_validate:
+    path: '/lesson/{id}/validate'
+    controller: 'App\Controller\LessonController::validateLesson'
+    methods: ['POST']
+
+user_certifications:
+    path: '/certifications'
+    controller: 'App\Controller\CertificationController::index'
+    methods: ['GET']

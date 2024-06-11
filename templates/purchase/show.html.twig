@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des achats</title>
+</head>
+<body>
+    <h1>Vos cours disponibles</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Lesson</th>
+                <th>Cursus</th>
+                <th>Date d'achat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.id }}</td>
+                    <td>
+                        {% if purchase.lesson %}
+                            <a href="{{ path('lesson', {'id': purchase.lesson.id}) }}">{{ purchase.lesson is not null ? purchase.lesson.name : ''  }}</a>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if purchase.cursus %}
+                            <a href="{{ path('curcus', {'id': purchase.cursus.id}) }}">{{  purchase.cursus is not null ? purchase.cursus.name : '' }}</a>
+                        {% endif %}
+                      </td>
+
+                    <td>{{ purchase.createdAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

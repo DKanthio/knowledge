@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Certifications</title>
+</head>
+<body>
+<h1>Mes Certifications</h1>
+<ul>
+    {% for certification in certifications %}
+        <li>
+            <h2>{{ certification.cursus.name }}</h2>
+            <p>Date d'obtention: {{ certification.createdAt|date('d/m/Y') }}</p>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

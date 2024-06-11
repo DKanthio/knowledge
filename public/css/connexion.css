@@ -1,0 +1,46 @@
+body {
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 2rem;
+        }
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
