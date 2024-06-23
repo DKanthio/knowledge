@@ -97,7 +97,22 @@
             border: 2px solid var(--tertiary-color); /* Bordure avec la couleur tertiaire */
             box-shadow: var(--shadow-natural); /* Ombre naturelle */
         }
-        
+          .custom-link {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: var(--font-medium);
+            color: var(--primary-color);
+            background-color: var(--accent-color1);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: var(--shadow-natural);
+        }
+
+        .custom-link:hover {
+            background-color: var(--accent-color2);
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -131,12 +146,12 @@
             <strong>Formez-vous facilement avec Knowledge</strong>
         </span>
     </h3>
-    <a href="/purchase">Accéder à mes cours</a></li>
-       
+    <a href="/purchase" class="custom-link">Accéder à mes cours</a>
+
         <div class="row g-4">
             {% for theme in themes %}
-                <div class="col-md-3">
-                    <div class="card">
+                <div class="col-md-3 mt-3">
+                    <div class="card mb-4">
                         <img src="{{ asset('images/' ~ theme.image) }}" class="card-img-top small-image" alt="{{ theme.name }}">
                         <div class="card-body d-flex flex-column align-items-center">
                             <img src="{{ theme.icon }}" class="icon" alt="Icône de {{ theme.name }}">

@@ -77,20 +77,16 @@ class AcheterController extends AbstractController
             ]);
     
             if ($existingCursusPurchase) {
-                // If i have already purchased a course related to this cursus, show appropriate message
-                $this->addFlash('info', 'Vous avez déjà acheté le cursus lié à cette leçon.');
                 return $this->render('includes/info.html.twig', []);
             }
 
             // Check if i have already purchased this specific lesson
-            $existingLessonPurchase = $this->entityManager->getRepository(Purchase::class)->findOneBy([
+            $existingLesson = $this->entityManager->getRepository(Purchase::class)->findOneBy([
                 'user' => $user,
                 'lesson' => $lesson,
             ]);
     
-            if ($existingLessonPurchase) {
-                // If i have already purchased this lesson, show appropriate message
-                $this->addFlash('info', 'Vous avez déjà acheté cette leçon.');
+            if ($existingLesson) {
                 return $this->render('includes/remarque.html.twig', []);
             }
 
@@ -98,7 +94,7 @@ class AcheterController extends AbstractController
             $amount = $lesson->getPrice() * 100;
             Stripe\Charge::create([
                 "amount" => $amount,
-                "currency" => "usd",
+                "currency" => "eur",
                 "source" => $request->request->get('stripeToken'),
                 "description" => "Binaryboxtuts Payment Test"
             ]);

@@ -84,7 +84,7 @@ class CurcusController extends AbstractController
             $amount = $cursus->getPrice() * 100;
             Stripe\Charge::create([
                 "amount" => $amount,
-                "currency" => "usd",
+                "currency" => "eur",
                 "source" => $request->request->get('stripeToken'),
                 "description" => "Binaryboxtuts Payment Test"
             ]);
